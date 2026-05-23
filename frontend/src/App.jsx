@@ -9,6 +9,7 @@ import AddCustomer from "./pages/AddCustomer";
 import EditCustomer from "./pages/EditCustomer";
 
 function App() {
+  const test = ;
   return (
     <div className="container">
       
@@ -49,5 +50,5 @@ function App() {
 
 }
 
-const test = ;
+
 export default App;
