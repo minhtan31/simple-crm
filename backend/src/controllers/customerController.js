@@ -72,12 +72,33 @@ exports.searchCustomer = async (req, res) => {
 
     const customers = await Customer.find({
       name: {
-        $regex: keyword,
+        $regex: keyword || "",
         $options: "i"
       }
     });
 
     res.json(customers);
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
+
+exports.getCustomerById = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+
+    if (!customer) {
+      return res.status(404).json({
+        message: "Customer not found"
+      });
+    }
+
+    res.json(customer);
 
   } catch (error) {
     console.error(error);
