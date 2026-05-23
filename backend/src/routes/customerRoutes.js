@@ -5,7 +5,8 @@ const {
   createCustomer,
   updateCustomer,
   deleteCustomer,
-  searchCustomer
+  searchCustomer,
+  getCustomerById
 } = require("../controllers/customerController");
 
 const router = express.Router();
@@ -19,5 +20,7 @@ router.put("/:id", updateCustomer);
 router.delete("/:id", deleteCustomer);
 
 router.get("/search", searchCustomer);
+
+router.get("/:id", getCustomerById);
 
 module.exports = router;
