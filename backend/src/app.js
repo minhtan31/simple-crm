@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
+const customerRoutes = require("./routes/customerRoutes");
+const errorHandler = require("./middleware/errorHandler");
+
 const app = express();
 
 app.use(cors());
@@ -12,5 +15,9 @@ app.get("/api/health", (req, res) => {
     message: "Server running"
   });
 });
+
+app.use("/api/customers", customerRoutes);
+
+app.use(errorHandler);
 
 module.exports = app;
